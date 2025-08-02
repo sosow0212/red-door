@@ -1,0 +1,16 @@
+server:
+  servlet:
+    context-path: /api
+
+spring:
+  servlet:
+    multipart:
+      max-file-size: 10MB
+      max-request-size: 10MB
+
+swagger:
+  url: http://localhost:8080/api
+
+jwt:
+  secret: jwtscretjwtscretjwtscretjwtscretjwtscretjwtscretjwtscretjwtscretjwtscretjwtscretjwtscretjwtscretjwtscret
+  expiration-period: 10000
