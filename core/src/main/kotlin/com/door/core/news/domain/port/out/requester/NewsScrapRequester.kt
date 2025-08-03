@@ -6,9 +6,9 @@ import com.door.core.news.domain.News
 /**
  * 사전 정의된 API를 이용해 뉴스를 스크랩한다.
  */
-interface NewsRequester {
+interface NewsScrapRequester {
 
     fun supports(): NewsProvider
 
-    fun scrap(): News
+    fun scrap(): List<News>
 }
