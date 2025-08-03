@@ -21,9 +21,9 @@ dependencies {
 
     // Query DSL
     api("com.querydsl:querydsl-jpa:5.0.0:jakarta")
-    kapt("com.querydsl:querydsl-apt:5.0.0:jakarta")
-    kapt("jakarta.annotation:jakarta.annotation-api")
-    kapt("jakarta.persistence:jakarta.persistence-api")
+    api("com.querydsl:querydsl-apt:5.0.0:jakarta")
+    api("jakarta.annotation:jakarta.annotation-api")
+    api("jakarta.persistence:jakarta.persistence-api")
 }
 
 // Querydsl 설정 시작
