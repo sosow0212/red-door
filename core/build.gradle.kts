@@ -7,6 +7,7 @@ plugins {
 dependencies {
     implementation("org.springframework:spring-context:6.1.0")
     implementation("org.springframework:spring-tx:6.1.0")
+    testImplementation("org.springframework.boot:spring-boot-starter-test")
 
     // jasypt
     api("com.github.ulisesbocchio:jasypt-spring-boot-starter:3.0.5")
