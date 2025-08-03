@@ -3,7 +3,7 @@ package com.door.core.news.fixture
 import com.door.core.news.domain.News
 import com.door.core.news.domain.vo.AiOverview
 import com.door.core.news.domain.vo.Content
-import com.door.core.news.domain.vo.NewsProvider
+import com.door.core.global.NewsProvider
 import com.door.core.news.domain.vo.SentimentType
 import com.door.core.news.domain.vo.TargetCategory
 import java.time.LocalDateTime

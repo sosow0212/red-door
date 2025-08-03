@@ -1,4 +1,4 @@
-package com.door.core.news.domain.vo
+package com.door.core.global
 
 enum class NewsProvider {
 

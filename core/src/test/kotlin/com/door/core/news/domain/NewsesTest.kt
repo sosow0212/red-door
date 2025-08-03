@@ -1,6 +1,6 @@
 package com.door.core.news.domain
 
-import com.door.core.news.domain.vo.NewsProvider
+import com.door.core.global.NewsProvider
 import com.door.core.news.domain.vo.TargetCategory
 import com.door.core.news.fixture.NewsFixture.Companion.뉴스_생성_블룸버그_비트코인
 import com.door.core.news.fixture.NewsFixture.Companion.뉴스_생성_블룸버그_테슬라

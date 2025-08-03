@@ -1,6 +1,6 @@
 package com.door.core.news.domain
 
-import com.door.core.news.domain.vo.NewsProvider
+import com.door.core.global.NewsProvider
 import com.door.core.news.domain.vo.TargetCategory
 
 data class Newses(
