@@ -7,7 +7,7 @@ import com.door.core.news.domain.vo.TargetCategory
 import java.time.LocalDateTime
 
 data class News(
-    val id: Long,
+    val id: Long = 0L,
     val newsProvider: NewsProvider,
     val scrapedTime: LocalDateTime = LocalDateTime.now(),
     val originalContent: Content,
