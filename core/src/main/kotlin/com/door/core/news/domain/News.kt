@@ -28,4 +28,19 @@ data class News(
         return providers.contains(this.newsMeta.newsProvider)
                 && isMatchedCategory
     }
+
+    companion object {
+        fun createWithoutAI(
+            newsMeta: NewsMeta,
+            scrapedTime: LocalDateTime = LocalDateTime.now(),
+            originalContent: Content,
+        ) = News(
+            id = 0L,
+            newsMeta = newsMeta,
+            scrapedTime = scrapedTime,
+            originalContent = originalContent,
+            translatedContent = null,
+            aiOverView = null
+        )
+    }
 }

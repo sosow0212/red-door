@@ -52,21 +52,16 @@ class MarketAuxNewsScrapRequester(
                 .awaitSingle()
 
             response.data.map { newsItem ->
-                println("newsItem = ${newsItem.toString()}")
-                News(
-                    id = 0L,
-                    NewsMeta.of(
+                News.createWithoutAI(
+                    newsMeta = NewsMeta.of(
                         newsProvider = NewsProvider.MARKETAUX,
                         newsPublishedTime = OffsetDateTime.parse(newsItem.published_at, API_DATE_FORMATTER),
                         sourceUrl = newsItem.url
                     ),
-                    scrapedTime = LocalDateTime.now(),
                     originalContent = Content(
                         title = newsItem.title,
                         content = newsItem.description
                     ),
-                    translatedContent = null,
-                    aiOverView = null
                 )
             }
         } catch (e: WebClientResponseException) {
