@@ -3,12 +3,13 @@ package com.door.core.news.domain
 import com.door.core.global.NewsProvider
 import com.door.core.news.domain.vo.AiOverview
 import com.door.core.news.domain.vo.Content
+import com.door.core.news.domain.vo.NewsMeta
 import com.door.core.news.domain.vo.TargetCategory
 import java.time.LocalDateTime
 
 data class News(
     val id: Long = 0L,
-    val newsProvider: NewsProvider,
+    val newsMeta: NewsMeta,
     val scrapedTime: LocalDateTime = LocalDateTime.now(),
     val originalContent: Content,
 
@@ -24,7 +25,7 @@ data class News(
             ?.isMatchedCategory(categories)
             ?: false
 
-        return providers.contains(this.newsProvider)
+        return providers.contains(this.newsMeta.newsProvider)
                 && isMatchedCategory
     }
 }

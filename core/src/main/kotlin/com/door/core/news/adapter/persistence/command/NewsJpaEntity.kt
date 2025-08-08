@@ -32,6 +32,12 @@ class NewsJpaEntity(
     @Column(name = "news_provider", nullable = false)
     val newsProvider: NewsProvider,
 
+    @Column(name = "news_published_time", nullable = false)
+    val newsPublishedTime: LocalDateTime,
+
+    @Column(name = "source_url", nullable = false)
+    val sourceUrl: String,
+
     @Column(name = "scraped_time", nullable = false)
     val scrapedTime: LocalDateTime,
 
