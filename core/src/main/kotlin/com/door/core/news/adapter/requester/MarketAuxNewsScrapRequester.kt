@@ -12,7 +12,9 @@ import org.springframework.stereotype.Component
 import org.springframework.web.reactive.function.client.WebClient
 import org.springframework.web.reactive.function.client.WebClientResponseException
 import org.springframework.web.reactive.function.client.bodyToMono
+import java.net.URI
 import java.time.LocalDateTime
+import java.time.OffsetDateTime
 import java.time.format.DateTimeFormatter
 
 @Component
@@ -35,26 +37,27 @@ class MarketAuxNewsScrapRequester(
 
         return try {
             val response = webClient.get()
-                .uri { uriBuilder ->
-                    uriBuilder
-                        .path(marketAuxProperties.baseUrl)
-                        .queryParam("countries", "us")
-                        .queryParam("group", "economic")
-                        .queryParam("limit", limit)
-                        .queryParam("published_after", formattedPublishedTimeAfter)
-                        .queryParam("api_token", marketAuxProperties.apiKey)
-                        .build()
-                }
+                .uri(
+                    URI.create(
+                        "${marketAuxProperties.baseUrl}?" +
+                                "countries=us&" +
+                                "group=economic&" +
+                                "limit=${limit}&" +
+                                "published_after=$formattedPublishedTimeAfter&" +
+                                "api_token=${marketAuxProperties.apiKey}"
+                    )
+                )
                 .retrieve()
                 .bodyToMono<MarketAuxResponse>()
                 .awaitSingle()
 
             response.data.map { newsItem ->
+                println("newsItem = ${newsItem.toString()}")
                 News(
                     id = 0L,
                     NewsMeta.of(
                         newsProvider = NewsProvider.MARKETAUX,
-                        newsPublishedTime = newsItem.published_at,
+                        newsPublishedTime = OffsetDateTime.parse(newsItem.published_at, API_DATE_FORMATTER),
                         sourceUrl = newsItem.url
                     ),
                     scrapedTime = LocalDateTime.now(),
@@ -122,5 +125,8 @@ class MarketAuxNewsScrapRequester(
         val sentiment: Double,
         val highlighted_in: String
     )
-}
 
+    companion object {
+        private val API_DATE_FORMATTER = DateTimeFormatter.ofPattern("yyyy-MM-dd'T'HH:mm:ss.SSSSSSX")
+    }
+}
