@@ -25,3 +25,9 @@ jasypt:
   encryptor:
     bean: jasyptEncryptor
     password: password
+
+news:
+  marketaux:
+    api:
+      base-url: https://api.marketaux.com/v1/news/all
+      api-key: fake-api-key
