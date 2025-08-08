@@ -24,6 +24,9 @@ dependencies {
     api("com.querydsl:querydsl-apt:5.0.0:jakarta")
     api("jakarta.annotation:jakarta.annotation-api")
     api("jakarta.persistence:jakarta.persistence-api")
+
+    // WebClient
+    implementation("org.springframework.boot:spring-boot-starter-webflux")
 }
 
 // Querydsl 설정 시작
