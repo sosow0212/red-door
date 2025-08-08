@@ -1,4 +1,4 @@
-package com.door.core.news.persistence.command
+package com.door.core.news.adapter.persistence.command
 
 import com.door.core.global.BaseEntity
 import com.door.core.global.NewsProvider

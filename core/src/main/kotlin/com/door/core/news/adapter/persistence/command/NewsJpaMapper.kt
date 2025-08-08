@@ -1,4 +1,4 @@
-package com.door.core.news.persistence.command
+package com.door.core.news.adapter.persistence.command
 
 import com.door.core.news.domain.News
 import com.door.core.news.domain.vo.AiOverview
