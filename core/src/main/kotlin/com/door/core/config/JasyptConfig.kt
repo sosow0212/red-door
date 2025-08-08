@@ -13,7 +13,7 @@ class JasyptConfig {
     @Value("\${jasypt.encryptor.password}")
     private lateinit var ENCRYPT_KEY: String
 
-    @Bean
+    @Bean("jasyptEncryptor")
     fun encrypt(): StringEncryptor =
         PooledPBEStringEncryptor().apply {
             val config =

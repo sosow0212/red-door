@@ -24,6 +24,12 @@ dependencies {
     api("com.querydsl:querydsl-apt:5.0.0:jakarta")
     api("jakarta.annotation:jakarta.annotation-api")
     api("jakarta.persistence:jakarta.persistence-api")
+
+    // WebClient
+    implementation("org.springframework.boot:spring-boot-starter-webflux")
+    implementation("io.netty:netty-resolver-dns-native-macos:4.1.123.Final:osx-aarch_64")
+
+    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-reactor:1.8.0")
 }
 
 // Querydsl 설정 시작

@@ -1,4 +1,4 @@
-package com.door.core.news.persistence.command
+package com.door.core.news.adapter.persistence.command
 
 import com.door.core.global.BaseEntity
 import com.door.core.global.NewsProvider
@@ -31,6 +31,12 @@ class NewsJpaEntity(
     @Enumerated(EnumType.STRING)
     @Column(name = "news_provider", nullable = false)
     val newsProvider: NewsProvider,
+
+    @Column(name = "news_published_time", nullable = false)
+    val newsPublishedTime: LocalDateTime,
+
+    @Column(name = "source_url", nullable = false)
+    val sourceUrl: String,
 
     @Column(name = "scraped_time", nullable = false)
     val scrapedTime: LocalDateTime,

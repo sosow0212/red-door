@@ -3,7 +3,8 @@ package com.door.core.global
 enum class NewsProvider {
 
     ALL,
-    BLOOMBERG;
+    BLOOMBERG,
+    MARKETAUX;
 
     companion object {
         fun getAllProviders(): List<NewsProvider> {
