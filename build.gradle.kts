@@ -45,6 +45,9 @@ subprojects {
         testImplementation ("io.kotest:kotest-assertions-core:$kotestVersion")
         testImplementation ("io.kotest:kotest-property:$kotestVersion")
         testImplementation ("io.kotest:kotest-framework-datatest:$kotestVersion")
+
+        // jackson
+        implementation("com.fasterxml.jackson.module:jackson-module-kotlin:2.19.0")
     }
 
     tasks.withType<Test> {
