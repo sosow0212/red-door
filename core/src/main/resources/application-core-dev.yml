@@ -29,3 +29,9 @@ news:
       base-url: https://api.marketaux.com/v1/news/all
       api-key: ENC(GwgX3neJ1aq7pY4FMftsDXfBV8oaL0P4PdwSbB1DhNWwMhs+jOlswfRmDeXgatL6qOvAHBFoaUA=)
 
+ai:
+  openai:
+    api:
+      base-url: https://api.openai.com/v1/chat/completions
+      api-key: ENC(RVPBdVd3aCOrGv2rLcYDGk191+fgilIk4eM4A/sDj1RD/GhkDiX9hns7Hfnm9MByIN0lvBoKTqMltx4yjnuK0r/p8EZ57M5hPxDxxSYRR0YL+w7UWPfaVVVdL2kBaNO0ZaTLrwTr+B/HF4bh5umIEEiuMxo0lOW4kGmR50k0M5je7KTmbGhDku36Om41vldEgG/X5AvUcoNufcVegwJXmv1ZsHv1OsaY6iefrBVfnf8=)
+      model: ENC(V+IVyNhCCM6NHjD3smTC3btlOBXbKNwd)
