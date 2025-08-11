@@ -11,6 +11,6 @@ interface NewsAiRequester {
 
     fun supports(): AiModel
 
-    fun request(aiChatRequest: AiChatRequest): AiChatResponse
+    suspend fun request(aiChatRequest: AiChatRequest): AiChatResponse
 }
 

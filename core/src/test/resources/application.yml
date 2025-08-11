@@ -31,3 +31,11 @@ news:
     api:
       base-url: https://api.marketaux.com/v1/news/all
       api-key: fake-api-key
+
+ai:
+  openai:
+    api:
+      base-url: https://api.openai.com/v1/chat/completions
+      api-key: fake-key
+      model: fake-model
+

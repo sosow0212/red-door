@@ -12,5 +12,7 @@ enum class TargetCategory {
     NVDA,
     GOOGL,
     META,
-    TSLA
+    TSLA,
+
+    NONE // 해당 없음
 }

@@ -1,6 +1,10 @@
 package com.door.core.news.domain.port.out.requester.dto
 
 data class AiChatRequest(
-    val prompt: String
+    val newsItems: List<NewsItemRequest>,
 ) {
+    data class NewsItemRequest(
+        val title: String,
+        val content: String,
+    )
 }
