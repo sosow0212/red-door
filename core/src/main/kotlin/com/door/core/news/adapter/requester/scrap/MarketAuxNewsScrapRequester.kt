@@ -1,7 +1,7 @@
-package com.door.core.news.adapter.requester
+package com.door.core.news.adapter.requester.scrap
 
 import com.door.core.global.NewsProvider
-import com.door.core.news.adapter.requester.properties.MarketAuxProperties
+import com.door.core.news.adapter.requester.scrap.properties.MarketAuxProperties
 import com.door.core.news.domain.News
 import com.door.core.news.domain.port.out.requester.NewsScrapRequester
 import com.door.core.news.domain.vo.Content

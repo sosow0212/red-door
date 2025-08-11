@@ -1,7 +1,7 @@
-package com.door.core.news.adapter.requester
+package com.door.core.news.adapter.requester.overview
 
 import com.door.core.global.AiModel
-import com.door.core.news.adapter.requester.properties.OpenAiProperties
+import com.door.core.news.adapter.requester.overview.properties.OpenAiProperties
 import com.door.core.news.domain.port.out.requester.NewsAiRequester
 import com.door.core.news.domain.port.out.requester.dto.AiChatRequest
 import com.door.core.news.domain.port.out.requester.dto.AiChatResponse

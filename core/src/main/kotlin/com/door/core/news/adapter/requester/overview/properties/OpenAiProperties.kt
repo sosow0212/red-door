@@ -1,4 +1,4 @@
-package com.door.core.news.adapter.requester.properties
+package com.door.core.news.adapter.requester.overview.properties
 
 import org.springframework.boot.context.properties.ConfigurationProperties
 
