@@ -45,18 +45,18 @@ class NewsJpaEntity(
     val originalTitle: String,
 
     @Lob
-    @Column(name = "original_content", nullable = false)
+    @Column(name = "original_content", nullable = false, columnDefinition = "TEXT")
     val originalContent: String,
 
-    @Column(name = "ai_translated_title")
+    @Column(name = "ai_translated_title", columnDefinition = "TEXT")
     val translatedTitle: String? = null,
 
     @Lob
-    @Column(name = "ai_translated_content")
+    @Column(name = "ai_translated_content", columnDefinition = "TEXT")
     val translatedContent: String? = null,
 
     @Lob
-    @Column(name = "ai_overview")
+    @Column(name = "ai_overview", columnDefinition = "TEXT")
     val overview: String? = null,
 
     @Enumerated(EnumType.STRING)
