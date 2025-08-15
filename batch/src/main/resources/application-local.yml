@@ -1,7 +1,7 @@
 spring:
   batch:
     jdbc:
-      initialize-schema: never
+      initialize-schema: always
       isolation-level-for-create: read_committed
     job:
       enabled: false # 자동 실행 방지
