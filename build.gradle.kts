@@ -48,6 +48,10 @@ subprojects {
 
         // jackson
         implementation("com.fasterxml.jackson.module:jackson-module-kotlin:2.19.0")
+
+        // Coroutines
+        implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.8.0")
+        implementation("org.jetbrains.kotlinx:kotlinx-coroutines-reactor:1.8.0")
     }
 
     tasks.withType<Test> {
