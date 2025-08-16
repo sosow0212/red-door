@@ -12,6 +12,7 @@ import org.springframework.batch.core.step.tasklet.Tasklet
 import org.springframework.batch.repeat.RepeatStatus
 import org.springframework.stereotype.Component
 import java.time.LocalDateTime
+import java.time.ZoneId
 import java.time.format.DateTimeFormatter
 
 @Component
@@ -63,10 +64,13 @@ class NewsCrawlingTasklet(
 
     private fun parsePublishTimeAfter(publishTimeAfterParam: String): LocalDateTime {
         return try {
-            LocalDateTime.parse(publishTimeAfterParam, dateFormatter)
+            val kstDateTime = LocalDateTime.parse(publishTimeAfterParam, dateFormatter)
+            val kstZonedDateTime = kstDateTime.atZone(ZoneId.of("Asia/Seoul"))
+            val estZonedDateTime = kstZonedDateTime.withZoneSameInstant(ZoneId.of("America/New_York"))
+            estZonedDateTime.toLocalDateTime()
         } catch (e: Exception) {
-            log.warn("잘못된 publishTimeAfter 파라미터 형식: $publishTimeAfterParam. 기본값(1일 전)으로 설정합니다.")
-            LocalDateTime.now().minusDays(1)
+            log.warn("잘못된 publishTimeAfter 파라미터 형식: $publishTimeAfterParam. 기본값(1일 전, EST)으로 설정합니다.")
+            LocalDateTime.now(ZoneId.of("America/New_York")).minusDays(1)
         }
     }
 
