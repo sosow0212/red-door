@@ -1,3 +1,7 @@
 spring:
   profiles:
     active: local
+
+scheduling:
+  news-scrap:
+    enabled: true

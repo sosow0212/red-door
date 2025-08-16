@@ -45,9 +45,15 @@ subprojects {
         testImplementation ("io.kotest:kotest-assertions-core:$kotestVersion")
         testImplementation ("io.kotest:kotest-property:$kotestVersion")
         testImplementation ("io.kotest:kotest-framework-datatest:$kotestVersion")
+        testImplementation("org.mockito.kotlin:mockito-kotlin:5.4.0")
 
         // jackson
         implementation("com.fasterxml.jackson.module:jackson-module-kotlin:2.19.0")
+
+        // Coroutines
+        implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.8.0")
+        implementation("org.jetbrains.kotlinx:kotlinx-coroutines-reactor:1.8.0")
+        testImplementation("org.jetbrains.kotlinx:kotlinx-coroutines-test:1.8.0")
     }
 
     tasks.withType<Test> {

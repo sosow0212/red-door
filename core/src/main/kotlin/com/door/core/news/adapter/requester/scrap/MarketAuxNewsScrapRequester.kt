@@ -15,6 +15,7 @@ import org.springframework.web.reactive.function.client.bodyToMono
 import java.net.URI
 import java.time.LocalDateTime
 import java.time.OffsetDateTime
+import java.time.ZoneId
 import java.time.format.DateTimeFormatter
 
 @Component
@@ -33,7 +34,9 @@ class MarketAuxNewsScrapRequester(
         publishTimeAfter: LocalDateTime,
         limit: Int
     ): List<News> {
-        val formattedPublishedTimeAfter = publishTimeAfter.format(DateTimeFormatter.ofPattern("yyyy-MM-dd'T'HH:mm"))
+        val estZonedDateTime = publishTimeAfter.atZone(ZoneId.of("America/New_York"))
+        val utcZonedDateTime = estZonedDateTime.withZoneSameInstant(ZoneId.of("UTC"))
+        val formattedPublishedTimeAfter = utcZonedDateTime.format(DateTimeFormatter.ofPattern("yyyy-MM-dd'T'HH:mm"))
 
         return try {
             val response = webClient.get()

@@ -4,6 +4,7 @@ import com.door.core.global.NewsProvider
 import com.door.core.news.domain.vo.AiOverview
 import com.door.core.news.domain.vo.Content
 import com.door.core.news.domain.vo.NewsMeta
+import com.door.core.news.domain.vo.SentimentType
 import com.door.core.news.domain.vo.TargetCategory
 import java.time.LocalDateTime
 
@@ -27,6 +28,28 @@ data class News(
 
         return providers.contains(this.newsMeta.newsProvider)
                 && isMatchedCategory
+    }
+
+    fun updateAiAnalysis(
+        overview: String,
+        translatedTitle: String,
+        translatedContent: String,
+        categories: List<TargetCategory>,
+        sentimentType: SentimentType,
+        sentimentRatio: Double
+    ): News {
+        return this.copy(
+            translatedContent = Content(
+                title = translatedTitle,
+                content = translatedContent,
+            ),
+            aiOverView = AiOverview(
+                overview = overview,
+                sentimentType = sentimentType,
+                sentimentScore = sentimentRatio,
+                targetCategories = categories,
+            )
+        )
     }
 
     companion object {
