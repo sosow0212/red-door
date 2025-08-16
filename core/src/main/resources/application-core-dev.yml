@@ -1,6 +1,4 @@
 spring:
-  jackson:
-    time-zone: UTC
   datasource:
     url: jdbc:mysql://localhost:3306/reddoor?useSSL=false&serverTimezone=UTC&useUnicode=true&characterEncoding=utf8&allowPublicKeyRetrieval=true
     username: root

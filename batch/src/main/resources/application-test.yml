@@ -1,7 +1,7 @@
 spring:
   batch:
     jdbc:
-      initialize-schema: never
+      initialize-schema: always
       isolation-level-for-create: read_committed
     job:
       enabled: false # 자동 실행 방지
@@ -15,3 +15,7 @@ spring:
         default_batch_fetch_size: 100
         jdbc:
           time-zone: UTC
+
+scheduling:
+  news-scrap:
+    enabled: false

@@ -1,6 +1,4 @@
 spring:
-  jackson:
-    time-zone: UTC
   h2:
     console:
       enabled: true
