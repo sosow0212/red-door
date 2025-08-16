@@ -10,7 +10,6 @@ import org.springframework.batch.core.configuration.annotation.StepScope
 import org.springframework.batch.core.scope.context.ChunkContext
 import org.springframework.batch.core.step.tasklet.Tasklet
 import org.springframework.batch.repeat.RepeatStatus
-import org.springframework.beans.factory.annotation.Value
 import org.springframework.stereotype.Component
 import java.time.LocalDateTime
 import java.time.format.DateTimeFormatter
@@ -24,15 +23,13 @@ class NewsCrawlingTasklet(
 
     private val log = LoggerFactory.getLogger(this::class.java)
 
-    @Value("#{jobParameters['publishTimeAfter']}")
-    private lateinit var publishTimeAfterParam: String
-
-    @Value("#{jobParameters['limit']}")
-    private var limitParam: Int = 3
-
     override fun execute(contribution: StepContribution, chunkContext: ChunkContext): RepeatStatus {
         return try {
-            val publishTimeAfter = parsePublishTimeAfter()
+            val jobParameters = chunkContext.stepContext.jobParameters
+            val publishTimeAfterParam = jobParameters["publishTimeAfter"] as String
+            val limitParam = (jobParameters["limit"] as Long).toInt()
+
+            val publishTimeAfter = parsePublishTimeAfter(publishTimeAfterParam)
             val newses = scrapAll(publishTimeAfter, limitParam)
             newsPersistencePort.saveAllNews(newses)
 
@@ -64,7 +61,7 @@ class NewsCrawlingTasklet(
         }
     }
 
-    private fun parsePublishTimeAfter(): LocalDateTime {
+    private fun parsePublishTimeAfter(publishTimeAfterParam: String): LocalDateTime {
         return try {
             LocalDateTime.parse(publishTimeAfterParam, dateFormatter)
         } catch (e: Exception) {

@@ -4,11 +4,18 @@ import org.springframework.batch.core.Job
 import org.springframework.batch.core.JobParametersBuilder
 import org.springframework.batch.core.launch.JobLauncher
 import org.springframework.beans.factory.annotation.Qualifier
+import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty
 import org.springframework.scheduling.annotation.EnableScheduling
 import org.springframework.scheduling.annotation.Scheduled
 import org.springframework.stereotype.Component
 import java.time.LocalDateTime
+import java.time.format.DateTimeFormatter
 
+@ConditionalOnProperty(
+    name = ["scheduling.news-scrap.enabled"],
+    havingValue = "true",
+    matchIfMissing = true
+)
 @EnableScheduling
 @Component
 class NewsScrapScheduler(
@@ -18,10 +25,14 @@ class NewsScrapScheduler(
     private val newsScrapJob: Job
 ) {
 
-    @Scheduled(fixedRate = EVERY_FIFTY_MINUTE)
+    @Scheduled(fixedRate = EVERY_JOB_INTERVAL_MINUTE)
     fun runNewsScrapJob() {
+        val publishTimeAfter = LocalDateTime.now().minusMinutes(JOB_INTERVAL_MINUTE)
+            .format(DATE_TIME_FORMATTER)
+            .toString()
+
         val jobParameters = JobParametersBuilder()
-            .addString("publishTimeAfter", LocalDateTime.now().minusHours(1).toString())
+            .addString("publishTimeAfter", publishTimeAfter)
             .addLong("limit", SCRAP_LIMIT_SIZE)
             .toJobParameters()
 
@@ -29,7 +40,9 @@ class NewsScrapScheduler(
     }
 
     companion object {
-        private const val EVERY_FIFTY_MINUTE: Long = 15 * 60 * 1000
+        private const val JOB_INTERVAL_MINUTE: Long = 15
+        private const val EVERY_JOB_INTERVAL_MINUTE: Long = JOB_INTERVAL_MINUTE * 60 * 1000
         private const val SCRAP_LIMIT_SIZE: Long = 5
+        private val DATE_TIME_FORMATTER = DateTimeFormatter.ofPattern("yyyy-MM-dd'T'HH:mm:ss")
     }
 }
