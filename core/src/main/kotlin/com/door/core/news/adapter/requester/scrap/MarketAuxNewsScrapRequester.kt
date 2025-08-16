@@ -38,16 +38,6 @@ class MarketAuxNewsScrapRequester(
         val utcZonedDateTime = estZonedDateTime.withZoneSameInstant(ZoneId.of("UTC"))
         val formattedPublishedTimeAfter = utcZonedDateTime.format(DateTimeFormatter.ofPattern("yyyy-MM-dd'T'HH:mm"))
 
-        val create = URI.create(
-            "${marketAuxProperties.baseUrl}?" +
-                    "countries=us&" +
-                    "group=economic&" +
-                    "limit=${limit}&" +
-                    "published_after=$formattedPublishedTimeAfter&" +
-                    "api_token=${marketAuxProperties.apiKey}"
-        )
-        println("create.toString() = ${create.toString()}")
-
         return try {
             val response = webClient.get()
                 .uri(
